@@ -1,0 +1,94 @@
+<%- include("partials/header.ejs") %>
+
+    <main>
+        <% if(locals.active){%>
+            <form class="pages flex" action="/" method="post">
+                <button <% if(active=="fiction" ){%> class="active" <%} %> type="submit" name="type"
+                        value="fiction">Fiction</button>
+                <button <% if(active=="nonfiction" ){%> class="active" <%} %>type="submit" name="type"
+                        value="nonfiction">Non-Fiction</button>
+                <button <% if(active=="humor" ){%> class="active" <%} %>type="submit" name="type"
+                        value="humor">Humor</button>
+                <button <% if(active=="fantasy" ){%> class="active" <%} %>type="submit" name="type"
+                        value="fantasy">Fantasy</button>
+            </form>
+            <% } %>
+                <% if(locals.type){ %>
+                    <div class="home">
+                        <a href="/">Back to home</a>
+                        <h2>Search results for <%= type %>
+                        </h2>
+                    </div>
+                    <% }%>
+                        <section class="content inc-fact">
+                            <div class="slider flex grid">
+                                <% if(locals.collectionBooks) { collectionBooks.forEach((book)=> { %>
+                                    <div class="card flex" style="background-color: black;color: white;">
+                                        <div class="bookmark">
+                                            <i class="fa-solid fa-bookmark" id="bookmark"></i>
+                                        </div>
+                                        <div class="left">
+                                            <img src="<%=book.imageLink%>" alt="book cover" class="cover">
+                                        </div>
+                                        <div class="right">
+                                            <p class="title">
+                                                <%= book.title%>
+                                            </p>
+                                            <div class="price flex">
+                                                <p class="amount">Rs <%=book.amount %>
+                                                </p>
+                                                <a href="<%=book.buyLink %>" class="buy">Buy</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% }) } %>
+                            </div>
+
+                            <section class="fun-fact">
+                                <h3> <span class="circle"></span>Fun Fact</h3>
+                                <p id="fact">The first ebook in the world was released on July 4, 1971. It is the US Declaration of Independence. In 1971, passionate technologist and futurist Michael Stern Hart,inspired by afree printed copy of the Declaration of Independence, decided to tranintoa computer.
+                                </p>
+                            </section>
+                        </section>
+
+                        <% if(locals.freeBooks) {%>
+                            <section class="content">
+                                <h2 class="sub-heading " style="font-size: 1.6rem;">Free ebooks Collection</h2>
+
+                                <button class="arrow-left">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+
+                                <div class="slider flex purple">
+
+                                    <%freeBooks.forEach((book)=> { %>
+                                        <div class="card flex">
+                                            <div class="bookmark">
+                                                <i class="fa-solid fa-bookmark" id="bookmark"></i>
+                                            </div>
+                                            <div class="left">
+                                                <img src="<%=book.imageLink%>" alt="book cover" class="cover">
+                                            </div>
+                                            <div class="right">
+                                                <p class="title">
+                                                    <%= book.title%>
+                                                </p>
+                                                <div class="price flex">
+                                                    <a href="<%=book.buyLink %>" class="buy"
+                                                        style="margin-top: 5%;">Read Now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% })%>
+
+                                </div>
+                                <button class="arrow-right">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+
+                            </section>
+                            <% } %>
+
+    </main>
+
+    <%- include("partials/footer.ejs") %>

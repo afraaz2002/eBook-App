@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliotheca. find your right eBook</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="side-menu">
+            <div class="close">
+                <i class="fa-solid fa-xmark" style="color: #ffffff;font-size: 1.8rem;"></i>
+            </div>
+
+            <ul class="side-items flex">
+                <li><a href="/">Home</a></li>
+                <li><a href="/">Collection</a></li>
+                <li><a href="/">About</a></li>
+                <li><a href="/">Contact</a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <nav class="nav flex">
+                <div class="logo">
+                    <img src="./bars-sort(1).png" alt="bar-icon" id="sidebar">
+                    <div class="heading ">
+                        <h1>Bibliotheca.</h1>
+                        <h1>Bibliotheca.</h1>
+                    </div>
+                </div>
+
+                <div class="bars flex">
+                    <form class="search" action="/search" method="post">
+                        <input type="text" class="hiddenInput" placeholder="Search ebooks..." name="search"
+                            autocomplete="off" autofocus required onchange="this.form.submit()">
+                        <div id="searchBtn">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </form>
+
+                    <button id="bookmark-page">
+                        <i class="fa-solid fa-bookmark" id="bookmark"></i>
+                    </button>
+                </div>
+            </nav>
+
+            <div class="heading large">
+                <a href="/">Bibliotheca.</a>
+                <br>
+                <a href="/">Bibliotheca.</a>
+            </div>
+
+            <h2 class="sub-heading top">Lets Find books which takes you to another World</h2>
+        </div>
+        <section class="content">
+            <h2 class="sub-heading ">For you</h2>
+
+            <button class="arrow-left">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <div class="slider flex">
+                <% if(locals.customBooks) { customBooks.forEach((book)=> { %>
+                    <div class="card flex">
+                        <div class="bookmark">
+                            <i class="fa-solid fa-bookmark" id="bookmark"></i>
+                        </div>
+                        <div class="left">
+                            <img src="<%=book.imageLink%>" alt="book cover" class="cover">
+                        </div>
+                        <div class="right">
+                            <p class="title">
+                                <%= book.title%>
+                            </p>
+                            <div class="price flex">
+                                <p class="amount">Rs <%=book.amount %>
+                                </p>
+                                <a href="<%=book.buyLink %>" class="buy">Buy</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) } %>
+            </div>
+            <button class="arrow-right">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </section>
+    </header>
