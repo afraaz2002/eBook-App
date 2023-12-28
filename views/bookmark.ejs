@@ -1,0 +1,39 @@
+<%- include("partials/header.ejs") %>
+
+<style>
+    #main-content{
+    display: none;
+}
+</style>
+
+<main>
+    <div class="container">
+    <h1 class="bookmark-heading">Your Bookmarks</h1>
+    <section class="content inc-fact">
+        <div class="slider flex grid">
+            <% if(locals.collectionBooks) { collectionBooks.forEach((book)=> { %>
+                <div class="card flex" style="background-color: #003543;color: white;">           
+                        <button class="bookmark" name="eBook" value="<%=book.id%>">
+                            <i class="fa-solid fa-bookmark"></i>
+                        </button>
+                    <div class="left">
+                        <img src="<%=book.imageLink%>" alt="book cover" class="cover">
+                    </div>
+                    <div class="right">
+                        <p class="title">
+                            <%= book.title%>
+                        </p>
+                        <div class="price flex">
+                            <p class="amount">Rs <%=book.amount %>
+                            </p>
+                            <a href="<%=book.buyLink %>" class="buy">Buy</a>
+                        </div>
+                    </div>
+                </div>
+                <% }) } %>
+        </div>
+    </div>
+</main>
+
+
+<%- include("partials/footer.ejs") %>

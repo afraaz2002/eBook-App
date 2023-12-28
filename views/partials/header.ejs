@@ -41,9 +41,12 @@
                         </div>
                     </form>
 
-                    <button id="bookmark-page">
-                        <i class="fa-solid fa-bookmark" id="bookmark"></i>
-                    </button>
+                    <form action="/bookmark" method="get">
+                        <button id="bookmark-page">
+                            <i class="fa-solid fa-bookmark" id="bookmark"></i>
+                        </button>
+                    </form>
+                
                 </div>
             </nav>
 
@@ -55,7 +58,7 @@
 
             <h2 class="sub-heading top">Lets Find books which takes you to another World</h2>
         </div>
-        <section class="content">
+        <section class="content" id="main-content">
             <h2 class="sub-heading ">For you</h2>
 
             <button class="arrow-left">
@@ -65,9 +68,11 @@
             <div class="slider flex">
                 <% if(locals.customBooks) { customBooks.forEach((book)=> { %>
                     <div class="card flex">
-                        <div class="bookmark">
-                            <i class="fa-solid fa-bookmark" id="bookmark"></i>
-                        </div>
+                        <form action="/bookmark" method="post">
+                        <button class="bookmark" name="eBook" value="<%=book.id%>">
+                            <i class="fa-solid fa-bookmark"></i>
+                        </button>
+                        </form>
                         <div class="left">
                             <img src="<%=book.imageLink%>" alt="book cover" class="cover">
                         </div>

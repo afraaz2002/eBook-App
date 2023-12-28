@@ -23,10 +23,12 @@
                         <section class="content inc-fact">
                             <div class="slider flex grid">
                                 <% if(locals.collectionBooks) { collectionBooks.forEach((book)=> { %>
-                                    <div class="card flex" style="background-color: black;color: white;">
-                                        <div class="bookmark">
-                                            <i class="fa-solid fa-bookmark" id="bookmark"></i>
-                                        </div>
+                                    <div class="card flex" style="background-color: #003543;color: white;">
+                                        <form action="/bookmark" method="post">
+                                            <button class="bookmark" name="eBook" value="<%=book.id%>">
+                                                <i class="fa-solid fa-bookmark"></i>
+                                            </button>
+                                        </form>
                                         <div class="left">
                                             <img src="<%=book.imageLink%>" alt="book cover" class="cover">
                                         </div>
@@ -46,7 +48,10 @@
 
                             <section class="fun-fact">
                                 <h3> <span class="circle"></span>Fun Fact</h3>
-                                <p id="fact">The first ebook in the world was released on July 4, 1971. It is the US Declaration of Independence. In 1971, passionate technologist and futurist Michael Stern Hart,inspired by afree printed copy of the Declaration of Independence, decided to tranintoa computer.
+                                <p id="fact">The first ebook in the world was released on July 4, 1971. It is the US
+                                    Declaration of Independence. In 1971, passionate technologist and futurist Michael
+                                    Stern Hart,inspired by afree printed copy of the Declaration of Independence,
+                                    decided to tranintoa computer.
                                 </p>
                             </section>
                         </section>
@@ -63,9 +68,11 @@
 
                                     <%freeBooks.forEach((book)=> { %>
                                         <div class="card flex">
-                                            <div class="bookmark">
-                                                <i class="fa-solid fa-bookmark" id="bookmark"></i>
-                                            </div>
+                                            <form action="/bookmark" method="post">
+                                                <button class="bookmark" name="eBook" value="<%=book.id%>">
+                                                    <i class="fa-solid fa-bookmark" ></i>
+                                                </button>
+                                            </form>
                                             <div class="left">
                                                 <img src="<%=book.imageLink%>" alt="book cover" class="cover">
                                             </div>

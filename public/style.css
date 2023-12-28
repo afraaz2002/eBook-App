@@ -276,6 +276,8 @@ p {
     font-size: 1.1rem;
     top: -3%;
     right: 5%;
+    background-color: transparent;
+    border: none;
 }
 
 .cover {
@@ -339,6 +341,11 @@ p {
 .purple>* {
     background-color: #003543;
     color: white;
+}
+
+.bookmark-heading{
+    text-align: center;
+    margin: 1rem 0;
 }
 
 @media(min-width:480px) {

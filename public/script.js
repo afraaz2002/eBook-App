@@ -8,6 +8,7 @@ let fact=document.querySelector("#fact");
 let sidebarBtn = document.querySelector("#sidebar");
 let sideMenu = document.querySelector(".side-menu");
 let sideMenuClose = document.querySelector(".close");
+let bookmarks= document.querySelectorAll(".bookmark");
 
 let cardWidth;
 let vpWidth = window.innerWidth;
@@ -17,6 +18,12 @@ if (vpWidth >= 1400) {
 } else {
     cardWidth = vpWidth / 3.7;
 }
+
+bookmarks.forEach((bookmark) => {
+    bookmark.addEventListener("click",() => {
+        alert("Bookmarked!")
+    })
+})
 
 const randomFact = () => {
 
@@ -28,6 +35,10 @@ const randomFact = () => {
 
 }
 randomFact();
+
+// bookmark.addEventListener("click",() => {
+//     alert("eBook Bookmarked!");
+// })
 
 sidebarBtn.addEventListener("click",() => {
     sideMenu.classList.add("open");
